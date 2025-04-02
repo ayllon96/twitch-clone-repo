@@ -1,9 +1,26 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-standard-scss",
   "overrides": [
     {
       "files": ["*.vue", "**/*.vue"],
       "customSyntax": "postcss-html"
     }
-  ]
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-empty-line-before": null,
+    "keyframes-name-pattern": [
+      "^[a-z][a-zA-Z0-9]+$",
+      {
+        "message": "Keyframe names should use camelCase (e.g., shimmerEffect)"
+      }
+    ],
+    "scss/at-mixin-pattern": [
+      "^[a-z][a-zA-Z0-9]+$",
+      {
+        "message": "Mixin names may use camelCase (e.g., myMixin)"
+      }
+    ]
+  }
 }
