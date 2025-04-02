@@ -1,7 +1,5 @@
 <template>
-  <section>
-    <h1>Navbar</h1>
-  </section>
+  <NuxtLayout/>
 </template>
 
 <script setup></script>
