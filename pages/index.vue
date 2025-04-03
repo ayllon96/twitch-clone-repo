@@ -1,7 +1,11 @@
 <template>
   <div class="home-layout">
     <Navbar />
+    <h2>Videos we think you'll like</h2>
     <main class="home-layout__main"></main>
+    <section class="streams-grid">
+      <StreamCard v-for="stream in streams" :key="stream.id" :stream="stream" />
+    </section>
     <RecommendedChannels :show="showAside" @toggle="showAside = !showAside" />
   </div>
 </template>
@@ -9,12 +13,43 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import Navbar from '@/components/layout/Navbar.vue'
+  import StreamCard from '@/components/sections/StreamCard.vue'
   import RecommendedChannels from '@/components/sections/RecommendedChannels.vue'
 
+  type Stream = {
+    id: string
+    user_name: string
+    title: string
+    thumbnail_url: string
+    viewer_count: number
+  }
+
+  const streams = ref<Stream[]>([])
+
+  onMounted(async () => {
+    const res = await fetch('/api/streams')
+    const data = await res.json()
+    streams.value = data
+  })
   const showAside = ref(true)
 </script>
 
 <style lang="scss" scoped>
+  .streams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    width: 100%;
+
+    @include responsive(48em) {
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      padding: 1rem;
+    }
+  }
+
   .aside-toggle {
     position: fixed;
     top: 1rem;
