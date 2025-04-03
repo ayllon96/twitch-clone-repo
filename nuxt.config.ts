@@ -27,4 +27,8 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    twitchClientId: process.env.TWITCH_CLIENT_ID,
+    twitchClientSecret: process.env.TWITCH_CLIENT_SECRET
+  }
 })
