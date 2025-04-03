@@ -1,17 +1,24 @@
+@use 'sass:map';
+
 $colors: (
-  "twitch-purple": #9146ff,
-  "twitch-black": #18181b,
-  "twitch-gray": #202020,
-  "twitch-white": #fff,
-  "twitch-light-gray": #f0f0f0,
-  "twitch-dark-gray": #121212,
-  "twitch-blue": #0073e6,
-  "twitch-red": #f00,
-  "twitch-green": #0f0,
-  "twitch-yellow": #ff00,
+  'nav-grey': #18181b,
+  'body-black': #0e0e10,
+  'font-white': #efeff1,
+  'font-grey': #adadb8,
+  'twitch-blue': #199afc,
+  'button-grey': #2f2f35,
+  'button-red': #eb0400,
 );
 
 $fonts: (
-  "font-primary": "Inter, Arial, sans-serif",
-  "font-secondary": "Helvetica Neue, Arial, sans-serif",
+  'font-primary': 'Inter, Arial, sans-serif',
+  'font-secondary': 'Helvetica Neue, Arial, sans-serif',
 );
+
+@function color($key) {
+  @return map.get($colors, $key);
+}
+
+@function font($key) {
+  @return map.get($fonts, $key);
+}

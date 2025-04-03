@@ -1,24 +1,38 @@
 <template>
   <div class="layout">
     <Navbar />
-    <main class="layout__main">
-      <slot />
+    <main class="layout__content">
+      <NuxtPage />
     </main>
-    <Sidebar />
+    <RecommendedChannels class="layout__aside" />
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-.layout {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  min-height: 100vh;
-  background-color: var(--color-bg);
+  .layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: color('body-black');
 
-  &__main {
-    padding: 1.5rem;
+    &__content {
+      flex: 1;
+      padding: 5rem 2vw 2rem;
+    }
+
+    &__aside {
+      width: 20vw;
+      min-width: 15rem;
+    }
+
+    @include responsive(48em) {
+      flex-direction: column;
+
+      &__aside {
+        order: 3;
+        width: 100%;
+      }
+    }
   }
-}
 </style>
