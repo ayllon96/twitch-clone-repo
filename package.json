@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.10.0",
-    "@nuxt/fonts": "^0.11.0",
+    "@nuxt/fonts": "^0.11.1",
     "@nuxt/icon": "^1.11.0",
     "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^3.0.2",
@@ -33,6 +33,7 @@
     "@nuxt/test-utils-edge": "^3.8.0-28284309.b3d3d7f4",
     "@types/node": "^22.13.17",
     "eslint": ">=8.48.0",
+    "eslint-plugin-vue": "^10.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "postcss-html": "^1.8.0",
