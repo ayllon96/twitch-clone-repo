@@ -11,24 +11,25 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '@/components/Navbar.vue'
-import Sidebar from '@/components/Sidebar.vue'
+  import Navbar from '@/components/Navbar.vue'
+  import Sidebar from '@/components/Sidebar.vue'
 </script>
 
 <style lang="scss" scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  &__body {
+  .layout {
+    background-color: color('body-black');
     display: flex;
-    flex: 1;
-  }
+    flex-direction: column;
+    min-height: 100vh;
 
-  &__content {
-    flex: 1;
-    padding: 2rem;
+    &__body {
+      display: flex;
+      flex: 1;
+    }
+
+    &__content {
+      flex: 1;
+      padding: 2rem;
+    }
   }
-}
 </style>
