@@ -1,71 +1,78 @@
 <template>
-  <article class="stream-card" @click="goToStream">
-    <img :src="stream.thumbnail_url" alt="Thumbnail" class="stream-card__thumbnail" />
-    <div class="stream-card__info">
-      <h3 class="stream-card__title">{{ stream.title }} title</h3>
-      <p class="stream-card__user">{{ stream.user_name }} user</p>
-      <p class="stream-card__viewers">{{ stream.viewer_count }} viewers</p>
+  <NuxtLink :to="`/stream/${stream.user_id}`" class="stream-card">
+    <img :src="stream.thumbnail_url.replace('{width}', '320').replace('{height}', '180')" alt="Thumbnail" class="stream-card__thumb" />
+    <div class="stream-card__body">
+      <img :src="stream.profile_image_url" alt="Avatar" class="stream-card__avatar" />
+      <div class="stream-card__info">
+        <p class="stream-card__title">{{ stream.title }}</p>
+        <p class="stream-card__user">{{ stream.user_name }}</p>
+        <div class="stream-card__tags">
+          <span v-for="tag in stream.tags" :key="tag" class="stream-card__tag">{{ tag }}</span>
+        </div>
+      </div>
     </div>
-  </article>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
-
-  const props = defineProps<{
-    stream: {
-      id: string
-      user_name: string
-      title: string
-      thumbnail_url: string
-      viewer_count: number
-    }
-  }>()
-
-  const router = useRouter()
-
-  function goToStream() {
-    router.push(`/watch/${props.stream.id}`)
-  }
+defineProps<{ stream: any }>()
 </script>
 
 <style scoped lang="scss">
-  .stream-card {
+.stream-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: color("body-black");
+  padding: 1rem;
+  border-radius: 0.75rem;
+  color: white;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+
+  &__thumb {
     width: 100%;
-    max-width: 20rem;
     border-radius: 0.5rem;
-    overflow: hidden;
-    background-color: color('font-white');
-    cursor: pointer;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: translateY(-4px);
-    }
-
-    &__thumbnail {
-      width: 100vw;
-      height: auto;
-      display: block;
-    }
-
-    &__info {
-      padding: 0.8rem;
-
-      & > * {
-        margin: 0.2rem 0;
-      }
-
-      &__title {
-        font-weight: bold;
-        color: color('font-white');
-      }
-
-      &__user,
-      &__viewers {
-        font-size: 0.85rem;
-        color: color('font-grey');
-      }
-    }
   }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__user {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  &__tag {
+    background: #26262c;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+  }
+}
 </style>

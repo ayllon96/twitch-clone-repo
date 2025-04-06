@@ -9,12 +9,12 @@
 
     <section class="sidebar__panel">
       <ul>
-        <NuxtLink
-          :to="`stream/${stream.user_id}`"
-          v-for="stream in streams"
-          :key="stream.id"
-          class="sidebar__item"
-        >
+          <NuxtLink
+            :to="`/stream/${stream.user_id}`"
+            v-for="stream in streams"
+            :key="stream.id"
+            class="sidebar__item"
+          >
           <img class="sidebar__thumbnail" :src="stream.profile_image_url" alt="User avatar" />
 
           <template v-if="open">
