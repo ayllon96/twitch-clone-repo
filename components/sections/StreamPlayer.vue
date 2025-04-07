@@ -9,3 +9,13 @@
     allowfullscreen
   ></iframe>
 </template>
+
+<style scoped lang="scss">
+  .stream-page__player {
+    width: 100%;
+    height: 34rem;
+    border: none;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+  }
+</style>

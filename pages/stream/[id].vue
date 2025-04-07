@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router'
   import { TwitchAPI } from '@/lib/twitch-api'
-  import StreamPlayer from '@/components/StreamPlayer.vue'
-  import StreamActions from '@/components/StreamActions.vue'
-  import StreamHeader from '@/components/StreamHeader.vue'
-  import StreamAbout from '@/components/StreamAbout.vue'
-  import StreamChat from '@/components/StreamChat.vue'
+  import StreamPlayer from '../components/sections/StreamPlayer.vue'
+  import StreamActions from '../components/sections/StreamActions.vue'
+  import StreamHeader from '../components/sections/StreamHeader.vue'
+  import StreamAbout from '../components/sections/StreamAbout.vue'
+  import StreamChat from '../components/sections/StreamChat.vue'
 
   const route = useRoute()
   const stream = ref(null)
@@ -46,3 +46,25 @@
     <StreamChat v-if="stream" :channel="stream.user_name" />
   </div>
 </template>
+
+<style scoped lang="scss">
+  .stream-page {
+    display: flex;
+    background-color: color('body-black');
+    color: color('font-white');
+    min-height: 100vh;
+
+    @media (width <= 64em) {
+      flex-direction: column;
+    }
+  }
+
+  .stream-page__main {
+    flex: 1;
+    padding: 2rem;
+  }
+
+  .stream-page__chat {
+    flex: 0 1 26rem;
+  }
+</style>

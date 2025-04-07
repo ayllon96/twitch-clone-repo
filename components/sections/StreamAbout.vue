@@ -8,3 +8,13 @@
     <p>{{ user.description || 'No description available.' }}</p>
   </section>
 </template>
+
+<style scoped lang="scss">
+  .stream-page__about {
+    background-color: color('button-grey');
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+</style>
