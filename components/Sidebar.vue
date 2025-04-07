@@ -1,3 +1,38 @@
+<script setup lang="ts">
+  import { TwitchAPI } from '@/lib/twitch-api'
+
+  const open = ref(false)
+  const streams = ref([])
+
+  onMounted(async () => {
+    const api = await TwitchAPI.getInstance()
+    const result = await api.getStreams()
+    const allStreams = result.data || []
+
+    const validLoginRegex = /^[a-zA-Z0-9_]{4,25}$/
+
+    const filteredStreams = allStreams.filter((stream: any) =>
+      validLoginRegex.test(stream.user_name)
+    )
+
+    const topStreams = filteredStreams.slice(0, 5)
+
+    const usernames = topStreams.map((stream: any) => stream.user_name.toLowerCase())
+    const users = await api.getUsers(usernames)
+
+    const userMap = Object.fromEntries(users.map((u: any) => [u.login.toLowerCase(), u]))
+
+    streams.value = topStreams.map((stream: any) => ({
+      ...stream,
+      profile_image_url: userMap[stream.user_name.toLowerCase()]?.profile_image_url || '',
+    }))
+  })
+
+  const formatViewers = (count: number): string => {
+    return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : `${count}`
+  }
+</script>
+
 <template>
   <aside class="sidebar">
     <div class="sidebar__header">
@@ -9,12 +44,12 @@
 
     <section class="sidebar__panel">
       <ul>
-          <NuxtLink
-            :to="`/stream/${stream.user_id}`"
-            v-for="stream in streams"
-            :key="stream.id"
-            class="sidebar__item"
-          >
+        <NuxtLink
+          :to="`/stream/${stream.user_id}`"
+          v-for="stream in streams"
+          :key="stream.id"
+          class="sidebar__item"
+        >
           <img class="sidebar__thumbnail" :src="stream.profile_image_url" alt="User avatar" />
 
           <template v-if="open">
@@ -33,34 +68,6 @@
     </section>
   </aside>
 </template>
-
-<script setup lang="ts">
-  import { ref, onMounted } from 'vue'
-  import { TwitchAPI } from '@/lib/twitch-api'
-
-  const open = ref(false)
-  const streams = ref([])
-
-  onMounted(async () => {
-    const api = await TwitchAPI.getInstance()
-    const result = await api.getStreams()
-    const topStreams = result.data.slice(0, 5)
-
-    const usernames = topStreams.map((stream: any) => stream.user_name.toLowerCase())
-    const users = await api.getUsers(usernames)
-
-    const userMap = Object.fromEntries(users.map((u: any) => [u.login.toLowerCase(), u]))
-
-    streams.value = topStreams.map((stream: any) => ({
-      ...stream,
-      profile_image_url: userMap[stream.user_name.toLowerCase()]?.profile_image_url || '',
-    }))
-  })
-
-  const formatViewers = (count: number): string => {
-    return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : `${count}`
-  }
-</script>
 
 <style lang="scss">
   @use '../assets/scss/variables';
@@ -116,7 +123,7 @@
     &__thumbnail {
       width: 2.5rem;
       height: 2.5rem;
-      border-radius: 999px;
+      border-radius: 62rem;
       object-fit: cover;
       flex-shrink: 0;
       transform: translateY(-1rem) scale(0.95);

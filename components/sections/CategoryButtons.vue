@@ -1,13 +1,4 @@
-<template>
-    <section class="category-buttons">
-      <button v-for="(btn, i) in buttons" :key="i" class="category-buttons__button">
-        {{ btn.label }}
-        <img :src="btn.img" :alt="btn.label" />
-      </button>
-    </section>
-  </template>
-  
-  <script setup lang="ts">
+<script setup lang="ts">
   const buttons = [
     { label: 'Games', img: '/img/gaming.png' },
     { label: 'IRL', img: '/img/irl.png' },
@@ -15,16 +6,25 @@
     { label: 'Creative', img: '/img/creative.png' },
     { label: 'Esports', img: '/img/esports.png' },
   ]
-  </script>
-  
-  <style scoped lang="scss">
+</script>
+
+<template>
+  <section class="category-buttons">
+    <button v-for="(btn, i) in buttons" :key="i" class="category-buttons__button">
+      {{ btn.label }}
+      <img :src="btn.img" :alt="btn.label" />
+    </button>
+  </section>
+</template>
+
+<style scoped lang="scss">
   .category-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
-  
+
     &__button {
       display: flex;
       align-items: center;
@@ -37,14 +37,13 @@
       font-size: 1rem;
       font-family: Inter, sans-serif;
       cursor: pointer;
-  
+
       img {
         width: 1.5rem;
         height: 1.5rem;
         transform: scale(1.1);
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        filter: drop-shadow(0 0.125rem 0.25rem rgb(0 0 0 / 30%));
       }
     }
   }
-  </style>
-  
+</style>
