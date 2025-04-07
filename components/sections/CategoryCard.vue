@@ -3,14 +3,21 @@
 </script>
 
 <template>
-  <div class="category-card">
+  <div
+    class="category-card"
+    role="button"
+    tabindex="0"
+    :aria-label="`Browse category: ${category.name}`"
+  >
     <img
       :src="category.box_art_url.replace('{width}', '285').replace('{height}', '380')"
+      :alt="`Cover art for ${category.name}`"
       class="category-card__img"
     />
     <p class="category-card__name">{{ category.name }}</p>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
   .category-card {

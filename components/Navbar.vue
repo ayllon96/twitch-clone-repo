@@ -1,41 +1,69 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <section class="navbar__section navbar__section--left">
-      <img src="../public/img/logo_twitch.png" alt="Logo de MIDUTCH" class="navbar__logo" />
-      <NuxtLink to="/" class="navbar__title">MIDUTCH</NuxtLink>
-      <img
-        src="../public/icons/more.png"
-        alt="Botón de más detalles"
-        class="navbar__icon navbar__icon--more"
-      />
+      <NuxtLink to="/" class="navbar__title" aria-label="Go to homepage">
+        <img
+          src="../public/img/logo_twitch.png"
+          alt="Logo de MIDUTCH"
+          class="navbar__logo"
+        />
+        MIDUTCH
+      </NuxtLink>
+
+      <button class="navbar__button navbar__button--more" aria-label="More options">
+        <img
+          src="../public/icons/more.png"
+          alt=""
+          class="navbar__icon navbar__icon--more"
+          aria-hidden="true"
+        />
+      </button>
     </section>
 
     <section class="navbar__section navbar__section--center">
-      <div class="navbar__search-group">
-        <input type="text" placeholder="Search..." class="navbar__search" />
-        <button class="navbar__button navbar__button--search" aria-label="Search">
+      <form class="navbar__search-group" role="search" aria-label="Site search">
+        <input
+          type="text"
+          placeholder="Search..."
+          class="navbar__search"
+          aria-label="Search"
+        />
+        <button
+          class="navbar__button navbar__button--search"
+          type="submit"
+          aria-label="Submit search"
+        >
           <img
             src="../public/icons/search.png"
-            alt="Search button"
+            alt=""
             class="navbar__icon navbar__icon--search"
+            aria-hidden="true"
           />
         </button>
-      </div>
+      </form>
     </section>
 
     <section class="navbar__section navbar__section--right">
-      <img
-        src="../public/icons/notification.png"
-        alt="Notifications"
-        class="navbar__icon navbar__icon--notif"
-      />
+      <button class="navbar__button navbar__button--notif" aria-label="View notifications">
+        <img
+          src="../public/icons/notification.png"
+          alt=""
+          class="navbar__icon navbar__icon--notif"
+          aria-hidden="true"
+        />
+      </button>
+
       <button class="navbar__button navbar__button--login" aria-label="Log in">Log in</button>
       <button class="navbar__button navbar__button--signup" aria-label="Sign up">Sign Up</button>
-      <img
-        src="../public/icons/profile.png"
-        alt="My Profile"
-        class="navbar__icon navbar__icon--profile"
-      />
+
+      <button class="navbar__button navbar__button--profile" aria-label="View profile">
+        <img
+          src="../public/icons/profile.png"
+          alt=""
+          class="navbar__icon navbar__icon--profile"
+          aria-hidden="true"
+        />
+      </button>
     </section>
   </nav>
 </template>

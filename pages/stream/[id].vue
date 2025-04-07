@@ -33,19 +33,45 @@
 </script>
 
 <template>
-  <div class="stream-page" v-if="user">
-    <main class="stream-page__main">
-      <StreamPlayer v-if="stream" :channel="stream.user_name" />
-      <p v-else class="stream-page__title">This channel is currently offline.</p>
+  <div class="stream-page" v-if="user" aria-label="Stream page">
+    <main class="stream-page__main" role="main" aria-label="Stream content">
+      <StreamPlayer
+        v-if="stream"
+        :channel="stream.user_name"
+        aria-label="Live stream player"
+      />
+      
+      <p v-else class="stream-page__title" role="alert" aria-live="assertive">
+        This channel is currently offline.
+      </p>
 
-      <StreamActions v-if="stream" />
-      <StreamHeader :stream="stream" :user="user" :duration="getDuration" />
-      <StreamAbout :user="user" />
+      <StreamActions
+        v-if="stream"
+        aria-label="Stream interaction actions"
+      />
+      
+      <StreamHeader
+        :stream="stream"
+        :user="user"
+        :duration="getDuration"
+        aria-label="Stream information"
+      />
+      
+      <StreamAbout
+        :user="user"
+        aria-label="Streamer biography and info"
+      />
     </main>
 
-    <StreamChat v-if="stream" :channel="stream.user_name" />
+    <StreamChat
+      v-if="stream"
+      :channel="stream.user_name"
+      role="complementary"
+      aria-label="Live chat"
+    />
   </div>
 </template>
+
 
 <style scoped lang="scss">
   .stream-page {
