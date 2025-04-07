@@ -78,7 +78,7 @@
       background-color: color('button-grey');
       border-radius: 0.4rem;
       overflow: hidden;
-      border: 1px solid rgb(91 91 91);
+      border: 0.06rem solid rgb(91 91 91);
     }
 
     &__search {
@@ -127,7 +127,7 @@
         background-color: color('button-grey');
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 5px;
+        border-radius: 0.312rem;
         font-family: Inter, sans-serif;
       }
 
@@ -135,7 +135,7 @@
         background-color: color('twitch-blue');
         color: white;
         padding: 0.5rem 1rem;
-        border-radius: 5px;
+        border-radius: 0.312rem;
         font-family: Inter, sans-serif;
       }
     }
@@ -163,6 +163,40 @@
       &--notif,
       &--profile {
         margin-left: 1rem;
+      }
+    }
+
+    @include responsive(48em) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+
+        &__section {
+          width: 100%;
+          justify-content: space-between;
+
+          &--center {
+            display: none;
+          }
+
+          &--right {
+            display: none;
+          }
+        }
+
+        &__logo {
+          width: 2.5em;
+          height: 2.5em;
+        }
+
+        &__title {
+          font-size: 1.2rem;
+        }
+
+        &__icon--more {
+          display: none;
+        }
       }
     }
   }

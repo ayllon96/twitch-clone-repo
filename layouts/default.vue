@@ -1,3 +1,8 @@
+<script setup lang="ts">
+  import Navbar from '@/components/Navbar.vue'
+  import Sidebar from '@/components/Sidebar.vue'
+</script>
+
 <template>
   <div class="layout">
     <Navbar />
@@ -9,11 +14,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-  import Navbar from '@/components/Navbar.vue'
-  import Sidebar from '@/components/Sidebar.vue'
-</script>
 
 <style lang="scss" scoped>
   .layout {
@@ -30,6 +30,20 @@
     &__content {
       flex: 1;
       padding: 2rem;
+    }
+
+    @include responsive(64em) {
+      .sidebar {
+        display: none;
+      }
+
+      .layout__content {
+        padding: 1rem;
+      }
+
+      .layout__body {
+        flex-direction: column;
+      }
     }
   }
 </style>

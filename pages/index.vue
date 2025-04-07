@@ -1,7 +1,21 @@
+<script setup lang="ts">
+  import { useTwitch } from '@/composables/useTwitch'
+  import StreamCard from '@/components/sections/StreamCard.vue'
+  import CategoryCard from '@/components/sections/CategoryCard.vue'
+  import CategoryButtons from '@/components/sections/CategoryButtons.vue'
+
+  const { streams, categories, fetchData } = useTwitch()
+
+  onMounted(() => {
+    fetchData()
+  })
+</script>
+
 <template>
   <section class="home">
     <h2 class="home__heading">
-      <span class="home__heading--highlight">Live channels</span> we think you'll like
+      <span class="home__heading--highlight">Live channels</span>
+      we think you'll like
     </h2>
 
     <section class="home__grid">
@@ -9,7 +23,8 @@
     </section>
 
     <h2 class="home__heading">
-      <span class="home__heading--highlight">Categories</span> we think you'll like
+      <span class="home__heading--highlight">Categories</span>
+      we think you'll like
     </h2>
 
     <section class="home__categories">
@@ -20,41 +35,27 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue'
-import { useTwitch } from '@/composables/useTwitch'
-import StreamCard from '@/components/sections/StreamCard.vue'
-import CategoryCard from '@/components/sections/CategoryCard.vue'
-import CategoryButtons from '@/components/sections/CategoryButtons.vue'
-
-const { streams, categories, fetchData } = useTwitch()
-
-onMounted(() => {
-  fetchData()
-})
-</script>
-
 <style scoped lang="scss">
-.home {
-  padding: 2rem;
+  .home {
+    padding: 2rem;
 
-  &__heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: white;
-    font-family: Inter, sans-serif;
+    &__heading {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: white;
+      font-family: Inter, sans-serif;
 
-    &--highlight {
-      color: color('twitch-blue');
+      &--highlight {
+        color: color('twitch-blue');
+      }
+    }
+
+    &__grid,
+    &__categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
   }
-
-  &__grid,
-  &__categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-}
 </style>
