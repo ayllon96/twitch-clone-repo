@@ -92,8 +92,8 @@
 
   .stream-page {
     display: flex;
-    background-color: #0e0e10;
-    color: white;
+    background-color: color('body-black');
+    color: color('font-white');
     min-height: 100vh;
 
     @include responsive(64em) {
@@ -127,12 +127,11 @@
       font-weight: bold;
       cursor: pointer;
       font-size: 0.875rem;
-      font-family: Inter, sans-serif;
       transition: background-color 0.2s ease;
 
       &--follow {
         background-color: color('twitch-blue');
-        color: white;
+        color: color('font-white');
 
         &:hover {
           background-color: #98bcff;
@@ -141,7 +140,7 @@
 
       &--subscribe {
         background-color: color('button-grey');
-        color: white;
+        color: color('font-white');
 
         &:hover {
           background-color: #646464;
@@ -175,15 +174,13 @@
     }
 
     &__name {
-      font-family: Inter, sans-serif;
       font-size: 1.25rem;
       font-weight: bold;
     }
 
     &__live {
-      font-family: Inter, sans-serif;
-      background-color: red;
-      color: white;
+      background-color: color('button-red');
+      color: color('font-white');
       padding: 0.2rem 0.6rem;
       border-radius: 62.4rem;
       font-size: 0.75rem;
@@ -198,7 +195,6 @@
     }
 
     &__title {
-      font-family: Inter, sans-serif;
       font-size: 1rem;
       font-weight: 600;
       margin: 0.5rem 0;
@@ -213,7 +209,7 @@
     }
 
     &__tag {
-      background-color: #26262c;
+      background-color: color('button-grey');
       padding: 0.3rem 0.7rem;
       border-radius: 62.4rem;
       font-size: 0.75rem;
@@ -224,7 +220,7 @@
       align-items: center;
       gap: 1rem;
       font-size: 0.8rem;
-      color: rgb(253 97 97);
+      color: color('button-red');
 
       span {
         display: flex;
@@ -240,8 +236,7 @@
     }
 
     &__about {
-      font-family: Inter, sans-serif;
-      background-color: #1f1f23;
+      background-color: color('button-grey');
       padding: 1rem;
       border-radius: 0.5rem;
       margin-top: 2rem;
@@ -250,7 +245,7 @@
 
     &__chat {
       width: 26rem;
-      background-color: #18181b;
+      background-color: color('body-black');
       padding: 0.5rem;
     }
 

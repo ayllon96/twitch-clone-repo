@@ -38,24 +38,53 @@
 <style scoped lang="scss">
   .home {
     padding: 2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 
     &__heading {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: white;
-      font-family: Inter, sans-serif;
+      color: color('font-white');
 
       &--highlight {
         color: color('twitch-blue');
       }
     }
 
-    &__grid,
-    &__categories {
+    &__grid {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
       margin-bottom: 2rem;
+    }
+
+    &__categories {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @include responsive(48em) {
+      padding: 1rem;
+
+      &__grid,
+      &__categories {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      &__heading {
+        font-size: 1.25rem;
+      }
     }
   }
 </style>
