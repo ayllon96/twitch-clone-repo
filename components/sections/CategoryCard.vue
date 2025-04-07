@@ -12,11 +12,13 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .category-card {
     text-align: center;
-    font-family: Inter, sans-serif;
     color: white;
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
 
     &__img {
       width: 100%;

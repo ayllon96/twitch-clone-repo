@@ -4,8 +4,8 @@
 </script>
 
 <template>
+  <Navbar />
   <div class="layout">
-    <Navbar />
     <div class="layout__body">
       <Sidebar />
       <main class="layout__content">
@@ -21,6 +21,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    max-width: 100%;
+    box-sizing: border-box;
 
     &__body {
       display: flex;
@@ -39,6 +41,9 @@
 
       .layout__content {
         padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
 
       .layout__body {

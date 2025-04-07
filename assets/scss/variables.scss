@@ -11,8 +11,8 @@ $colors: (
 );
 
 $fonts: (
-  'font-primary': 'Inter, Arial, sans-serif',
-  'font-secondary': 'Helvetica Neue, Arial, sans-serif',
+  primary: 'Inter, sans-serif',
+  secondary: 'Arial, sans-serif',
 );
 
 @function color($key) {

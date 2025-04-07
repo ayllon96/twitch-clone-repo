@@ -87,7 +87,6 @@
       border: none;
       background-color: color('nav-grey');
       color: white;
-      font-family: Inter, sans-serif;
       max-width: 20em;
       width: 100%;
 
@@ -128,7 +127,6 @@
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 0.312rem;
-        font-family: Inter, sans-serif;
       }
 
       &--signup {
@@ -136,7 +134,6 @@
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 0.312rem;
-        font-family: Inter, sans-serif;
       }
     }
 
@@ -149,7 +146,6 @@
     &__title {
       font-size: 1.5rem;
       color: white;
-      font-family: Inter, sans-serif;
       text-decoration: none;
     }
 
@@ -174,7 +170,7 @@
 
         &__section {
           width: 100%;
-          justify-content: space-between;
+          justify-content: center;
 
           &--center {
             display: none;

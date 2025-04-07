@@ -82,7 +82,7 @@
 
   .sidebar {
     width: 16rem;
-    background-color: #0e0e10;
+    background-color: color('body-black');
     padding: 1rem;
 
     &__header {
@@ -91,11 +91,10 @@
 
     &__toggle {
       background: color('body-black');
-      color: white;
+      color: color('font-white');
       padding: 0.5rem 1rem;
       border: none;
       cursor: pointer;
-      font-family: Inter, sans-serif;
       font-size: 0.75rem;
     }
 
@@ -109,8 +108,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 0;
-      color: white;
-      font-family: Inter, sans-serif;
+      color: color('font-white');
       font-size: 0.8rem;
       text-decoration: none;
       justify-content: start;
@@ -142,7 +140,7 @@
 
     &__username {
       font-weight: 600;
-      color: white;
+      color: color('font-white');
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -168,13 +166,13 @@
     &__live-dot {
       width: 0.5em;
       height: 0.5em;
-      background-color: red;
+      background-color: color('button-red');
       border-radius: 50%;
     }
 
     &__viewers {
       font-size: 0.75rem;
-      color: white;
+      color: color('font-white');
     }
 
     &__icon {
@@ -182,6 +180,47 @@
       height: 1.5rem;
       filter: brightness(0) invert(1);
       cursor: pointer;
+    }
+  }
+
+  @include responsive(64em) {
+    .sidebar {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+
+      &__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      &__panel {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        overflow-x: auto;
+        margin-top: 0;
+      }
+
+      &__item {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-width: 6rem;
+      }
+
+      &__info,
+      &__status {
+        display: none;
+      }
+
+      &__thumbnail {
+        transform: none;
+        animation: none;
+      }
     }
   }
 </style>

@@ -19,28 +19,32 @@
 
 <style scoped lang="scss">
   .category-buttons {
+    @include flex(64em);
+
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.5rem;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 
     &__button {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       background-color: color('twitch-blue');
-      color: white;
+      color: color('font-white');
       border: none;
       border-radius: 0.5rem;
       padding: 0.75rem 1rem;
       font-size: 1rem;
-      font-family: Inter, sans-serif;
       cursor: pointer;
 
       img {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 3rem;
+        height: 3rem;
         transform: scale(1.1);
         filter: drop-shadow(0 0.125rem 0.25rem rgb(0 0 0 / 30%));
       }

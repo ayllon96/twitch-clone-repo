@@ -26,13 +26,12 @@
   .stream-card {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     background: color('body-black');
     padding: 1rem;
     border-radius: 0.75rem;
-    color: white;
+    color: color('font-white');
     text-decoration: none;
-    font-family: Inter, sans-serif;
 
     &__thumb {
       width: 100%;
@@ -41,8 +40,8 @@
 
     &__body {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
     &__avatar {
@@ -63,17 +62,19 @@
 
     &__user {
       font-size: 0.9rem;
-      color: #b3b3b3;
+      color: color('font-gray');
+      margin-top: 0.5rem;
     }
 
     &__tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.3rem;
+      margin-top: 0.5rem;
     }
 
     &__tag {
-      background: #26262c;
+      background: color('button-grey');
       padding: 0.3rem 0.7rem;
       font-size: 0.75rem;
       border-radius: 62.4rem;
