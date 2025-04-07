@@ -7,8 +7,11 @@
     class="stream-page__player"
     :src="`https://player.twitch.tv/?channel=${channel}&parent=bright-moonbeam-9789ec.netlify.app`"
     allowfullscreen
+    :title="`Live stream player for ${channel}`"
+    aria-label="Live Twitch player"
   ></iframe>
 </template>
+
 
 <style scoped lang="scss">
   .stream-page__player {

@@ -12,28 +12,43 @@
 </script>
 
 <template>
-  <section class="home">
-    <h2 class="home__heading">
-      <span class="home__heading--highlight">Live channels</span>
-      we think you'll like
-    </h2>
+  <section class="home" role="main" aria-label="Home page content">
+    <section class="home__section" aria-labelledby="live-channels-heading">
+      <h2 id="live-channels-heading" class="home__heading">
+        <span class="home__heading--highlight">Live channels</span>
+        we think you'll like
+      </h2>
 
-    <section class="home__grid">
-      <StreamCard v-for="stream in streams" :key="stream.id" :stream="stream" />
+      <section class="home__grid" role="list" aria-label="Live channel list">
+        <StreamCard
+          v-for="stream in streams"
+          :key="stream.id"
+          :stream="stream"
+          role="listitem"
+        />
+      </section>
     </section>
 
-    <h2 class="home__heading">
-      <span class="home__heading--highlight">Categories</span>
-      we think you'll like
-    </h2>
+    <section class="home__section" aria-labelledby="categories-heading">
+      <h2 id="categories-heading" class="home__heading">
+        <span class="home__heading--highlight">Categories</span>
+        we think you'll like
+      </h2>
 
-    <section class="home__categories">
-      <CategoryCard v-for="category in categories" :key="category.id" :category="category" />
+      <section class="home__categories" role="list" aria-label="Category list">
+        <CategoryCard
+          v-for="category in categories"
+          :key="category.id"
+          :category="category"
+          role="listitem"
+        />
+      </section>
     </section>
 
-    <CategoryButtons />
+    <CategoryButtons aria-label="Filter categories" />
   </section>
 </template>
+
 
 <style scoped lang="scss">
   .home {

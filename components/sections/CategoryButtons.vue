@@ -9,13 +9,28 @@
 </script>
 
 <template>
-  <section class="category-buttons">
-    <button v-for="(btn, i) in buttons" :key="i" class="category-buttons__button">
+  <section
+    class="category-buttons"
+    role="group"
+    aria-label="Category filter buttons"
+  >
+    <button
+      v-for="(btn, i) in buttons"
+      :key="i"
+      class="category-buttons__button"
+      :aria-label="btn.label"
+    >
       {{ btn.label }}
-      <img :src="btn.img" :alt="btn.label" />
+      <img
+        :src="btn.img"
+        :alt="`Icon representing ${btn.label}`"
+        aria-hidden="true"
+        class="category-buttons__icon"
+      />
     </button>
   </section>
 </template>
+
 
 <style scoped lang="scss">
   .category-buttons {

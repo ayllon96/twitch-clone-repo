@@ -3,11 +3,16 @@
 </script>
 
 <template>
-  <section class="stream-page__about">
-    <h3>About {{ user.display_name }}</h3>
+  <section
+    class="stream-page__about"
+    role="region"
+    :aria-labelledby="`about-${user.id}`"
+  >
+    <h3 :id="`about-${user.id}`">About {{ user.display_name }}</h3>
     <p>{{ user.description || 'No description available.' }}</p>
   </section>
 </template>
+
 
 <style scoped lang="scss">
   .stream-page__about {

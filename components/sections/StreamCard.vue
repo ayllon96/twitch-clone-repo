@@ -3,24 +3,48 @@
 </script>
 
 <template>
-  <NuxtLink :to="`/stream/${stream.user_id}`" class="stream-card">
+  <NuxtLink
+    :to="`/stream/${stream.user_id}`"
+    class="stream-card"
+    :aria-label="`Watch ${stream.user_name}'s stream: ${stream.title}`"
+  >
     <img
       :src="stream.thumbnail_url.replace('{width}', '320').replace('{height}', '180')"
-      alt="Thumbnail"
+      :alt="`Thumbnail for ${stream.user_name}'s stream`"
       class="stream-card__thumb"
     />
+
     <div class="stream-card__body">
-      <img :src="stream.profile_image_url" alt="Avatar" class="stream-card__avatar" />
+      <img
+        :src="stream.profile_image_url"
+        :alt="`Profile picture of ${stream.user_name}`"
+        class="stream-card__avatar"
+      />
+
       <div class="stream-card__info">
         <p class="stream-card__title">{{ stream.title }}</p>
         <p class="stream-card__user">{{ stream.user_name }}</p>
-        <div class="stream-card__tags">
-          <span v-for="tag in stream.tags" :key="tag" class="stream-card__tag">{{ tag }}</span>
+
+        <div
+          class="stream-card__tags"
+          v-if="stream.tags?.length"
+          role="list"
+          aria-label="Stream tags"
+        >
+          <span
+            v-for="tag in stream.tags"
+            :key="tag"
+            class="stream-card__tag"
+            role="listitem"
+          >
+            {{ tag }}
+          </span>
         </div>
       </div>
     </div>
   </NuxtLink>
 </template>
+
 
 <style scoped lang="scss">
   .stream-card {

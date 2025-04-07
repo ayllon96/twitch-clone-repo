@@ -1,9 +1,25 @@
 <template>
-  <div class="stream-page__actions">
-    <button class="stream-page__button stream-page__button--follow">Follow</button>
-    <button class="stream-page__button stream-page__button--subscribe">Subscribe</button>
+  <div
+    class="stream-page__actions"
+    role="group"
+    aria-label="Stream interaction actions"
+  >
+    <button
+      class="stream-page__button stream-page__button--follow"
+      aria-label="Follow this channel"
+    >
+      Follow
+    </button>
+
+    <button
+      class="stream-page__button stream-page__button--subscribe"
+      aria-label="Subscribe to this channel"
+    >
+      Subscribe
+    </button>
   </div>
 </template>
+
 
 <style scoped lang="scss">
   .stream-page__actions {

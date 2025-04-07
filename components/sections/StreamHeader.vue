@@ -3,33 +3,64 @@
 </script>
 
 <template>
-  <div class="stream-page__header">
-    <img :src="user.profile_image_url" alt="Avatar" class="stream-page__avatar" />
+  <header class="stream-page__header" role="region" aria-label="Stream information">
+    <img
+      :src="user.profile_image_url"
+      :alt="`Profile picture of ${user.display_name}`"
+      class="stream-page__avatar"
+    />
+
     <div class="stream-page__meta">
       <div class="stream-page__meta-top">
         <h2 class="stream-page__name">{{ user.display_name }}</h2>
-        <span v-if="stream" class="stream-page__live">LIVE</span>
+        <span
+          v-if="stream"
+          class="stream-page__live"
+          role="status"
+          aria-live="polite"
+        >
+          LIVE
+        </span>
       </div>
 
       <div v-if="stream" class="stream-page__title-wrapper">
-        <p class="stream-page__title">{{ stream.title }}</p>
+        <p class="stream-page__title" aria-label="Stream title">{{ stream.title }}</p>
+
         <div class="stream-page__stats">
-          <span>
-            <img class="stream-page__stats--image" src="/icons/profile.png" alt="views" />
+          <span aria-label="Current viewers">
+            <img
+              class="stream-page__stats--image"
+              src="/icons/profile.png"
+              alt=""
+              aria-hidden="true"
+            />
             {{ stream.viewer_count.toLocaleString() }}
           </span>
-          <span>⏱ {{ duration(stream.started_at) }}</span>
+          <span aria-label="Stream duration">
+            ⏱ {{ duration(stream.started_at) }}
+          </span>
         </div>
       </div>
 
-      <div v-if="stream?.tags?.length" class="stream-page__tags">
-        <span v-for="tag in stream.tags" :key="tag" class="stream-page__tag">
+      <div
+        v-if="stream?.tags?.length"
+        class="stream-page__tags"
+        role="list"
+        aria-label="Stream tags"
+      >
+        <span
+          v-for="tag in stream.tags"
+          :key="tag"
+          class="stream-page__tag"
+          role="listitem"
+        >
           {{ tag }}
         </span>
       </div>
     </div>
-  </div>
+  </header>
 </template>
+
 
 <style scoped lang="scss">
   .stream-page__header {
