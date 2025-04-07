@@ -5,7 +5,7 @@
 <template>
   <aside class="stream-page__chat">
     <iframe
-      :src="`https://www.twitch.tv/embed/${channel}/chat?parent=localhost&darkpopout`"
+      :src="`https://www.twitch.tv/embed/${channel}/chat?parent=bright-moonbeam-9789ec.netlify.app&darkpopout`"
       class="stream-page__chat-iframe"
     ></iframe>
   </aside>

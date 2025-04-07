@@ -5,7 +5,7 @@
 <template>
   <iframe
     class="stream-page__player"
-    :src="`https://player.twitch.tv/?channel=${channel}&parent=localhost`"
+    :src="`https://player.twitch.tv/?channel=${channel}&parent=bright-moonbeam-9789ec.netlify.app`"
     allowfullscreen
   ></iframe>
 </template>
