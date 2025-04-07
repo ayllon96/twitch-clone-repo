@@ -7,24 +7,16 @@
   onMounted(async () => {
     const api = await TwitchAPI.getInstance()
     const result = await api.getStreams()
-    const allStreams = result.data || []
+    const topStreams = (result.data || []).slice(0, 5)
 
-    const validLoginRegex = /^[a-zA-Z0-9_]{4,25}$/
+    const userIds = topStreams.map((s: any) => s.user_id)
+    const users = await api.getUsersByIds(userIds)
 
-    const filteredStreams = allStreams.filter((stream: any) =>
-      validLoginRegex.test(stream.user_name)
-    )
-
-    const topStreams = filteredStreams.slice(0, 5)
-
-    const usernames = topStreams.map((stream: any) => stream.user_name.toLowerCase())
-    const users = await api.getUsers(usernames)
-
-    const userMap = Object.fromEntries(users.map((u: any) => [u.login.toLowerCase(), u]))
+    const userMap = Object.fromEntries(users.map((u: any) => [u.id, u]))
 
     streams.value = topStreams.map((stream: any) => ({
       ...stream,
-      profile_image_url: userMap[stream.user_name.toLowerCase()]?.profile_image_url || '',
+      profile_image_url: userMap[stream.user_id]?.profile_image_url || '',
     }))
   })
 
